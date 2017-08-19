@@ -16,7 +16,13 @@ class Route
 
 		$url = stristr($_SERVER['REQUEST_URI'], '?', true);
 
+		//если в строке нет get параметров
+		if(!$url)
+		    $url = $_SERVER['REQUEST_URI'];
+
 		$routes = explode('/', $url);
+
+
 
 		// получаем имя контроллера
 		if ( !empty($routes[1]) )

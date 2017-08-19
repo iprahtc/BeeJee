@@ -6,7 +6,6 @@ class Model_Main extends Model
 
     public function get_data()
     {
-        var_dump($_POST['filter']);
         return array(
             'pag' => $this->getCountList(),
             'db' => $this->gerDbList($_GET['p'], $_POST['filter'])

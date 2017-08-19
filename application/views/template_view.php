@@ -12,10 +12,22 @@
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="/js/materialize.js" type="text/javascript"></script>
+		<script src="/js/view.js" type="text/javascript"></script>
 		<script type="text/javascript">
-		$(document).ready(function() { 
-
-		});
+            $(document).ready(function() {
+                Materialize.updateTextFields();
+                $('select').material_select();
+                $('#textarea1').trigger('autoresize');
+                $('.modal').modal({
+                        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                        opacity: .5, // Opacity of modal background
+                        inDuration: 300, // Transition in duration
+                        outDuration: 200, // Transition out duration
+                        startingTop: '4%', // Starting top style attribute
+                        endingTop: '10%', // Ending top style attribute
+                    }
+                );
+            });
 		</script>
 	</head>
 	<body>
