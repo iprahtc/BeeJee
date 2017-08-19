@@ -2,19 +2,15 @@
 
 class Model
 {
-	
-	/*
-		Модель обычно включает методы выборки данных, это могут быть:
-			> методы нативных библиотек pgsql или mysql;
-			> методы библиотек, реализующих абстракицю данных. Например, методы библиотеки PEAR MDB2;
-			> методы ORM;
-			> методы для работы с NoSQL;
-			> и др.
-	*/
 
-	// метод выборки данных
-	public function get_data()
-	{
-		// todo
-	}
+    private $login = 'root';
+    private $pass = '';
+    private $host = 'localhost';
+    private $dbname = 'beejee';
+    public $db;
+
+    function __construct(){
+        $base = "mysql:host=$this->host;dbname=$this->dbname";
+        $this->db = new PDO($base, $this->login, $this->pass);
+    }
 }

@@ -13,8 +13,10 @@ class Route
 		// контроллер и действие по умолчанию
 		$controller_name = 'Main';
 		$action_name = 'index';
-		
-		$routes = explode('/', $_SERVER['REQUEST_URI']);
+
+		$url = stristr($_SERVER['REQUEST_URI'], '?', true);
+
+		$routes = explode('/', $url);
 
 		// получаем имя контроллера
 		if ( !empty($routes[1]) )
