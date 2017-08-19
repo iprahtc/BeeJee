@@ -6,27 +6,39 @@ class Model_Main extends Model
 
     public function get_data()
     {
-        //var_dump($_GET['p']);
+        var_dump($_POST['filter']);
         return array(
             'pag' => $this->getCountList(),
-            'db' => $this->gerDbList($_GET['p'])
+            'db' => $this->gerDbList($_GET['p'], $_POST['filter'])
         );
 
     }
 
-    private function gerDbList($get_pag)
+    private function gerDbList($get_pag, $filter)
     {
+        $sort = '';
+        if($filter[0])
+            $sort = ' ORDER BY email ';
+        if($filter[1])
+            $sort = ' ORDER BY name ';
+        if($filter[2])
+            $sort = ' ORDER BY status ';
+
+
         if($get_pag == NULL)
             $get_pag = 0;
         else
             $get_pag = ($get_pag - 1)*3;
+
         $sth = $this->db->prepare("SELECT
                                       tasks.*,
                                       user.email,
                                       user.name
                                     FROM tasks
                                       INNER JOIN user
-                                        ON tasks.id_user = user.id_user LIMIT ".$get_pag.",3");
+                                        ON tasks.id_user = user.id_user 
+                                        ".$sort."
+                                        LIMIT ".$get_pag.",3");
 
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
