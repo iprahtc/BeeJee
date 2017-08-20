@@ -35,10 +35,10 @@
                     <textarea name="text" id="text" class="materialize-textarea"></textarea>
                     <label for="text">Задача*</label>
                 </div>
-                <div class="col s2">
+                <div class="col s3">
                     <button id="save" class="waves-effect waves-light btn" type="submit">Сохранить</button>
                 </div>
-                <div class="col s2">
+                <div class="col s3">
                     <button class="waves-effect waves-light btn modal-trigger" href="#modal" onclick="preload()">Пример</button>
                 </div>
             </div>

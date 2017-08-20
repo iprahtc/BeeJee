@@ -25,7 +25,7 @@ SET NAMES 'utf8';
 -- 
 -- Установка базы данных по умолчанию
 --
-USE beejee;
+USE iprahtc;
 
 --
 -- Описание для таблицы admin

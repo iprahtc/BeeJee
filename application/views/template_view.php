@@ -6,6 +6,7 @@
 		<meta name="keywords" content="" />
 		<title>BeeJee</title>
 
+        <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="/css/materialize.css" />

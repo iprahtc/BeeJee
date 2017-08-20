@@ -44,17 +44,18 @@
 
                                 <?if($_SESSION['admin']){?>
                                     <!-- Modal Structure -->
-                                    <button class="waves-effect waves-light btn modal-trigger" href="#modal" ">Редактировать</button>
+                                    <button class="waves-effect waves-light btn modal-trigger" href="#modal<?=$v['id']?>" ">Редактировать</button>
                                 <?}?>
                             </div>
                         </div>
-                        <span class="card-title"><?=$v['name_text'] ?></span>
-                        <p><?=$v['text'] ?></p>
+                            <span class="card-title"><?=$v['name_text'] ?></span>
+                            <p><?=$v['text'] ?></p>
                     </div>
                 </div>
             </div>
                 <?if($_SESSION['admin']){?>
-                    <div id="modal" class="modal">
+                    <!-- Modal Structure -->
+                    <div id="modal<?=$v['id']?>" class="modal">
                         <div class="modal-content" id="preview">
                             <form method="post">
                                 <input name="id" value="<?=$v['id']?>" type="hidden">
@@ -67,7 +68,7 @@
                                         <label>Статус</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <textarea name="text" id="text" class="materialize-textarea"></textarea>
+                                        <textarea name="text" id="text" class="materialize-textarea" value="test"><?=$v['text'] ?></textarea>
                                         <label for="text">Задача</label>
                                     </div>
                                     <div class="col s2">
