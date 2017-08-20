@@ -36,7 +36,7 @@
                 <a href="/" class="brand-logo"><img src="/images/Screenshot.png"></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/">Главная</a></li>
-                    <li><a href="#">+Новая задача</a></li>
+                    <li><a href="/new">+Новая задача</a></li>
                     <li><a href="#">Вход</a></li>
                 </ul>
             </div>

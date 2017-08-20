@@ -1,18 +1,18 @@
 <div class="row">
     <div class="container">
         <h2 class="center-align">Ведите данны для записи</h2>
-        <form class="col s12" method="post">
+        <form class="col s12" enctype="multipart/form-data" method="post">
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Обязательно к заполнению" id="name" type="text" class="validate">
-                    <label for="name">Имя</label>
+                    <input placeholder="Обязательно к заполнению" name="name" id="name" type="text" class="validate">
+                    <label for="name">Имя*</label>
                 </div>
                 <div class="input-field col s6">
-                    <input placeholder="Обязательно к заполнению" id="email" type="text" class="validate">
-                    <label for="email">Email</label>
+                    <input placeholder="Обязательно к заполнению" name="email" id="email" type="text" class="validate">
+                    <label for="email">Email*</label>
                 </div>
                 <div class="input-field col s3">
-                    <input placeholder="Обязательно к заполнению" id="name_text" type="text" class="validate">
+                    <input placeholder="Не обязательно к заполнению" name="name_text" id="name_text" type="text" class="validate">
                     <label for="name_text">Название задачи</label>
                 </div>
                 <div class="input-field col s3">
@@ -32,8 +32,8 @@
                     </div>
                 </div>
                 <div class="input-field col s12">
-                    <textarea id="text" class="materialize-textarea"></textarea>
-                    <label for="text">Textarea</label>
+                    <textarea name="text" id="text" class="materialize-textarea"></textarea>
+                    <label for="text">Задача*</label>
                 </div>
                 <div class="col s2">
                     <button id="save" class="waves-effect waves-light btn" type="submit">Сохранить</button>

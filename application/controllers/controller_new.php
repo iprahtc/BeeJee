@@ -10,8 +10,13 @@ class Controller_New extends Controller
 
     function action_index()
     {
-        $data = $this->model->get_data();
-        if(!$_POST['ajax'])
-            $this->view->generate('new_view.php', 'template_view.php', $data);
+        //var_dump($_POST);
+        if(!$_POST){
+            $this->view->generate('new_view.php', 'template_view.php');
+        }
+        else{
+            $this->model->set_data();
+        }
     }
 }
+
