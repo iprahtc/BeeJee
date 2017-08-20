@@ -10,7 +10,6 @@ class Controller_New extends Controller
 
     function action_index()
     {
-        //var_dump($_POST);
         if(!$_POST){
             $this->view->generate('new_view.php', 'template_view.php');
         }

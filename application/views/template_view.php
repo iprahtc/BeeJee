@@ -24,7 +24,7 @@
                         inDuration: 300, // Transition in duration
                         outDuration: 200, // Transition out duration
                         startingTop: '4%', // Starting top style attribute
-                        endingTop: '10%', // Ending top style attribute
+                        endingTop: '10%' // Ending top style attribute
                     }
                 );
             });
@@ -37,7 +37,7 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/">Главная</a></li>
                     <li><a href="/new">+Новая задача</a></li>
-                    <li><a href="#">Вход</a></li>
+                    <li><a href="/login">Вход</a></li>
                 </ul>
             </div>
         </nav>

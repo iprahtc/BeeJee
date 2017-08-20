@@ -13,6 +13,7 @@ class Model_New extends Model
                 $name_text = '';
             $name_photo = '';
 
+            //код работы с картинкой
             if($_FILES['photo']['tmp_name']){
 
                 $sth = $this->db->prepare("SELECT MAX(id) as max FROM tasks");
@@ -39,10 +40,12 @@ class Model_New extends Model
         }
     }
 
+    //проверка на размерность картинки, преобразование в случае привышения и сохранение
     public function resizeimg($filename, $smallimage, $w, $h)
     {
         // получим размеры исходного изображения
         $size_img = getimagesize($filename);
+
         // Если размеры меньше, то масштабирования не нужно
         if (($size_img[0]<$w) && ($size_img[1]<$h)) return true;
 
@@ -56,14 +59,8 @@ class Model_New extends Model
         else if ($size_img[2]==3)
             $src_img = imagecreatefrompng($filename);
 
-        // масштабируем изображение     функцией imagecopyresampled()
-        // $dest_img - уменьшенная копия
-        // $src_img - исходной изображение
-        // $w - ширина уменьшенной копии
-        // $h - высота уменьшенной копии
-        // $size_img[0] - ширина исходного изображения
-        // $size_img[1] - высота исходного изображения
         imagecopyresampled($dest_img, $src_img, 0, 0, 0, 0, $w, $h, $size_img[0], $size_img[1]);
+
         // сохраняем уменьшенную копию в файл
         if ($size_img[2]==2)  imagejpeg($dest_img, $smallimage);
         else if ($size_img[2]==1) imagegif($dest_img, $smallimage);

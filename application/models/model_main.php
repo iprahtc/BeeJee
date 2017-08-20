@@ -13,6 +13,7 @@ class Model_Main extends Model
 
     }
 
+    //получение списка задач
     private function gerDbList($get_pag, $filter)
     {
         //запоминаем фильтры который использовал пользователь
@@ -44,6 +45,14 @@ class Model_Main extends Model
         return $result;
     }
 
+    //Изменение статуса и текста задачи
+    public function updateTask(){
+        if($_POST['status'])
+            $this->db->exec("UPDATE tasks SET status = '". $_POST['status'] ."' WHERE id = ". $_POST['id'] ."");
+        if($_POST['text'])
+            $this->db->exec("UPDATE tasks SET text = '". $_POST['text'] ."' WHERE id = ". $_POST['id'] ."");
+    }
+
     /**
      * возвращает HTML с пагинацией
      * @return string
@@ -54,6 +63,7 @@ class Model_Main extends Model
         $sth->execute();
         $count = $sth->fetch(PDO::FETCH_ASSOC)['count'];
 
+        //если вкладка была не указана или указана первая
         if($_GET['p'] == NULL || $_GET['p'] == 1)
         {
             if($count <= 3){
@@ -86,6 +96,7 @@ class Model_Main extends Model
             }
         }
         else {
+            //обработка случая когда пользователь сам пропишет не правильную страницу пагинации (ноль или больше максимальной)
             if ($count <= $_GET['p'] || $_GET['p'] == 0) {
                 $html = '<div class="row center"> 
                             <ul class="pagination">';
@@ -97,8 +108,9 @@ class Model_Main extends Model
 
                 return $html;
 
-            } else {
-
+            }
+            //условие срабатывае на корректный ввод или выбор
+            else {
                 $html = '<div class="row center"> 
                             <ul class="pagination">
                                 <li class="disabled"><a href="main?p='. ($_GET['p']-1) .'"><i class="material-icons">chevron_left</i></a></li>';
