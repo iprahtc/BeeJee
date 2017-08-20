@@ -16,6 +16,7 @@ class Controller_New extends Controller
         }
         else{
             $this->model->set_data();
+            $this->view->generate('end_view.php', 'template_view.php');
         }
     }
 }

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 class Model_Main extends Model
 {
@@ -15,14 +15,13 @@ class Model_Main extends Model
 
     private function gerDbList($get_pag, $filter)
     {
-        $sort = '';
-        if($filter[0])
-            $sort = ' ORDER BY email ';
-        if($filter[1])
-            $sort = ' ORDER BY name ';
-        if($filter[2])
-            $sort = ' ORDER BY status ';
-
+        //запоминаем фильтры который использовал пользователь
+        if($_POST['filter'] == 'email')
+            $_SESSION['Order'] = ' ORDER BY email ';
+        if($_POST['filter'] == 'name')
+            $_SESSION['Order'] = ' ORDER BY name ';
+        if($_POST['filter'] == 'status')
+            $_SESSION['Order'] = ' ORDER BY status ';
 
         if($get_pag == NULL)
             $get_pag = 0;
@@ -36,7 +35,7 @@ class Model_Main extends Model
                                     FROM tasks
                                       INNER JOIN user
                                         ON tasks.id_user = user.id_user 
-                                        ".$sort."
+                                        ".$_SESSION['Order']."
                                         LIMIT ".$get_pag.",3");
 
         $sth->execute();

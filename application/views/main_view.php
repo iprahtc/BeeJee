@@ -9,16 +9,16 @@
                     ?>
                     <form action="<?=$url?>" method="post">
                         <p>
-                            <input name="filter[0]" type="radio" id="test1" />
-                            <label for="test1">email</label>
+                            <input name="filter" type="radio" id="email" value="email"/>
+                            <label for="email">email</label>
                         </p>
                         <p>
-                            <input name="filter[1]" type="radio" id="test2" />
-                            <label for="test2">Имя пользователя</label>
+                            <input name="filter" type="radio" id="name" value="name"/>
+                            <label for="name">Имя пользователя</label>
                         </p>
                         <p>
-                            <input name="filter[2]" type="radio" id="test3"  />
-                            <label for="test3">Статус</label>
+                            <input name="filter" type="radio" id="status"  value="status"/>
+                            <label for="status">Статус</label>
                         </p>
                         <button class="waves-effect waves-light btn" type="submit">Сортировать</button>
                     </form>
@@ -33,8 +33,8 @@
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
                         <div class="row">
-                            <div class="col s4">
-                                <img class="activator" <?="src='images/". $v['img']."'"?>/>
+                            <div class="col s6">
+                                <img class="activator" <?="src='images/". $v['img']."'"?> width="320" height="240"/>
                             </div>
                             <div class="col s6">
                                 <h6>Имя пользвателя: <?=$v['name'] ?></h6>

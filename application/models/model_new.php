@@ -6,22 +6,36 @@ class Model_New extends Model
     public function set_data()
     {
         if($_POST['name'] && $_POST['email'] && $_POST['status'] && $_POST['text']){
+
+            if($_POST['name_text'])
+                $name_text = $_POST['name_text'];
+            else
+                $name_text = '';
+            $name_photo = '';
+
             if($_FILES['photo']['tmp_name']){
 
                 $sth = $this->db->prepare("SELECT MAX(id) as max FROM tasks");
                 $sth->execute();
                 $max = $sth->fetch(PDO::FETCH_ASSOC)['max'];
-                $name_photo = "images/". $max .".jpg";
-                $this->resizeimg($_FILES['photo']['tmp_name'], $name_photo, 320, 240);
-                $test = $this->getInsertUser();
-
-                //добавляем пользователя
-                $test->bindParam(':email', $_POST['email']);
-                $test->bindParam(':name', $_POST['name']);
-                $test->execute();
-                echo $this->db->lastInsertId();
-
+                $name_photo = $max .".jpg";
+                $this->resizeimg($_FILES['photo']['tmp_name'], "images/". $name_photo, 320, 240);
             }
+
+            //добавляем пользователя
+            $userTable = $this->getInsertUser();
+            $userTable->bindParam(':email', $_POST['email']);
+            $userTable->bindParam(':name', $_POST['name']);
+            $userTable->execute();
+
+            //добавляем задание
+            $tasksTable = $this->getInsertTask();
+            $tasksTable->bindParam(':id_user', $this->db->lastInsertId());
+            $tasksTable->bindParam(':status', $_POST['status']);
+            $tasksTable->bindParam(':text', $_POST['text']);
+            $tasksTable->bindParam(':img', $name_photo);
+            $tasksTable->bindParam(':name_text', $name_text);
+            $tasksTable->execute();
         }
     }
 
